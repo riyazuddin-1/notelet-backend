@@ -60,9 +60,9 @@ class User(AbstractBaseUser, PermissionsMixin):
     PermissionsMixin: A mixin that adds fields like is_staff, is_superuser, and groups, which are needed for handling user permissions.
     """
 
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, db_index=True)
     name = models.CharField(max_length=255, blank=True)
-    email = models.EmailField(unique=True)
+    email = models.EmailField(unique=True, db_index=True)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
 
